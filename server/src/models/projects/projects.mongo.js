@@ -17,6 +17,9 @@ const projectsSchema = new mongoose.Schema({
     data: Buffer,
     contentType: String
   },
+  technologies: {
+    type: String,
+  },
   source: {
     type: String,
     required: true,

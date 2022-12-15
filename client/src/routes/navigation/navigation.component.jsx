@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import useSound from 'use-sound';
-import { NavContainer, Line, NavSub } from './navigation.styles';
+import { NavContainer, Line, NavSub, SpinerImg } from './navigation.styles';
 import audio from '../../assets/click_link.mp3';
 
 const Navigation = () => {
@@ -11,7 +11,7 @@ const Navigation = () => {
       <NavContainer>
         <NavSub>
           <a href="/"  onClick={soundClick}>
-            <img src="https://cdn-icons-png.flaticon.com/512/1534/1534058.png" width="30" alt="galaxy"/>
+            <SpinerImg src="https://icons.iconarchive.com/icons/turbomilk/space-invaders/256/blackhole-icon.png" width="30" height="30" alt="galaxy"/>
             <span>SANJA MANDIC</span>
           </a>
           <div>

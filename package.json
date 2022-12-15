@@ -1,32 +1,44 @@
 {
-  "name": "nasa-project-api",
+  "name": "nasaproject",
   "version": "1.0.0",
-  "description": "NASA Mission control API",
-  "main": "src/server.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": "jest",
-    "test-watch": "jest --watch",
-    "watch": "nodemon src/server.js",
-    "start": "node src/server.js",
-    "cluster": "pm2 start src/server.js -i max"
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install": "npm install --prefix server && npm install --prefix client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "watch": "npm run server & npm run client",
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
+    "test": "npm test --prefix server && npm test --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sanja969/NasaProject.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "jest": {
-    "testEnvironment": "node"
+  "bugs": {
+    "url": "https://github.com/Sanja969/NasaProject/issues"
   },
-  "devDependencies": {
-    "jest": "^29.3.1",
-    "nodemon": "^2.0.20",
-    "supertest": "^6.3.3"
-  },
+  "homepage": "https://github.com/Sanja969/NasaProject#readme",
   "dependencies": {
-    "cors": "^2.8.5",
-    "csv-parse": "^5.3.3",
+    "@reduxjs/toolkit": "^1.9.1",
+    "axios": "^1.2.1",
+    "body-parser": "^1.20.1",
     "dotenv": "^16.0.3",
-    "express": "^4.18.2",
+    "ejs": "^3.1.8",
     "mongoose": "^6.8.0",
-    "pm2": "^5.2.2"
+    "pm2": "^5.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^8.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.2.2",
+    "redux-thunk": "^2.4.2",
+    "reselect": "^4.1.7"
   }
 }

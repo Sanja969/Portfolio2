@@ -27,11 +27,7 @@ export const NavSub = styled.div`
     font-size: 30px;
     text-shadow: 0 0 4px rgba(172,249,251,0.65);
     display: flex;
-    img {
-      animation: ${spiner} 2s linear infinite;
-      filter: grayscale(50%);
-      z-index: 5;
-    }
+
     span {
       padding-left: 15px;
     }
@@ -75,4 +71,10 @@ export const Line = styled.div`
     animation: ${increase} 2s linear;
     width: 100%;
   }
+`;
+
+export const SpinerImg = styled.img`
+  animation: ${spiner} 2s linear infinite;
+  filter: grayscale(50%);
+  z-index: 5;
 `;
