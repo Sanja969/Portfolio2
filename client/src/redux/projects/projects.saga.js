@@ -3,6 +3,7 @@ import {
 } from 'redux-saga/effects';
 import { fetchProjectsSuccess, fetchProjectsFailed, postProjectSuccess, postProjectFailed } from './projects.actions';
 import { PROJECTS_ACTION_TYPES } from './projects.types';
+import axios from 'axios';
 
 const url = 'http://localhost:8000/v1/projects'
 
@@ -37,6 +38,9 @@ const saveProject = async (project) => {
         img: project.img,
       }),
       // headers: {"Content-Type": "multipart/form-data"}
+      headers: {
+        "Content-Type": "application/json"
+       },
     });
 
     return await response.json();

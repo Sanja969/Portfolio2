@@ -58,20 +58,20 @@ const AddProject = () => {
     }});
   }
 
-  const setImageAction = (event) => {
+  const setImageAction = async (event) => {
     event.preventDefault();
 
-    img.append("file",uplImg.pictureAsFile);
+    img.append("file",urlImg.pictureAsFile);
 
-    console.log(uplImg.pictureAsFile);
+    console.log(urlImg.pictureAsFile);
 
     for (let key of img.entries()) {
       console.log(key[0] + ", " + key[1]);
     }
   }
 
-  const submitProject = () => {
-    setImageAction();
+  const submitProject = async () => {
+    const img = await setImageAction();
     createProject(name, description, img, technologies, source, live);
     resetFormFields();
     gotToHome();
@@ -80,14 +80,14 @@ const AddProject = () => {
   return (
     <CreateProjectContainer>
       <h3 className="">ADD NEW PROJECT</h3>
-      <form>
+      <form  onClick={submitProject}>
         <input type="text" name="name" placeholder="Name" onChange={handleChange} value={name} required />
         <input type="text" name="description" placeholder="Description" onChange={handleChange} value={description} required maxLength={500}/>
         <input type="file" id="img" name="img" placeholder="Image" onChange={handleImage} required />
         <input type="text" name="technologies" placeholder="Techologies" onChange={handleChange} value={technologies} required />
         <input type="text" name="source" placeholder="Source" onChange={handleChange} value={source} required />
         <input type="text" name="live" placeholder="Live" onChange={handleChange} value={live} required />
-        <button type="submit" onClick={submitProject}>SUBMIT</button>
+        <button type="submit">SUBMIT</button>
       </form>
     </CreateProjectContainer>
   );
