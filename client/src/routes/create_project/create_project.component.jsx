@@ -19,7 +19,7 @@ const AddProject = () => {
     technologies: '',
     source: '',
     live: '',
-    uplImg: {},
+    urlImg: {},
   };
 
   const [formFields, setFormFields] = useState(defaultFormFields);
@@ -29,7 +29,7 @@ const AddProject = () => {
     technologies,
     source,
     live,
-    uplImg,
+    urlImg,
   } = formFields;
 
   const resetFormFields = () => {
@@ -45,39 +45,37 @@ const AddProject = () => {
     img,
   }));
 
-  const submitProject = async () => {
-    // await setImageAction();
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormFields({ ...formFields, [name]: value });
+  }
+
+  const handleImage = (event) => {
+    setFormFields({ ...formFields,
+      urlImg: {
+      picturePreview: URL.createObjectURL(event.target.files[0]),
+      pictureAsFile: event.target.files[0]
+    }});
+  }
+
+  const setImageAction = (event) => {
+    event.preventDefault();
+
+    img.append("file",uplImg.pictureAsFile);
+
+    console.log(uplImg.pictureAsFile);
+
+    for (let key of img.entries()) {
+      console.log(key[0] + ", " + key[1]);
+    }
+  }
+
+  const submitProject = () => {
+    setImageAction();
     createProject(name, description, img, technologies, source, live);
     resetFormFields();
     gotToHome();
   };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    if(name !== 'img' || name !=='urlImg') {
-      setFormFields({ ...formFields, [name]: value });
-    }
-  }
-
-  // const handleImage = (event) => {
-  //   setFormFields({ ...formFields,
-  //     uplImg: {
-  //     picturePreview: URL.createObjectURL(event.target.files[0]),
-  //     pictureAsFile: event.target.files[0]
-  //   }});
-  // }
-
-  // const setImageAction = async (event) => {
-  //   event.preventDefault();
-
-  //   img.append("file",uplImg.pictureAsFile);
-
-  //   console.log(uplImg.pictureAsFile);
-
-  //   for (let key of img.entries()) {
-  //     console.log(key[0] + ", " + key[1]);
-  //   }
-  // }
   
   return (
     <CreateProjectContainer>
@@ -85,7 +83,7 @@ const AddProject = () => {
       <form>
         <input type="text" name="name" placeholder="Name" onChange={handleChange} value={name} required />
         <input type="text" name="description" placeholder="Description" onChange={handleChange} value={description} required maxLength={500}/>
-        {/* <input type="file" id="img" name="img" placeholder="Image" onChange={handleImage} required /> */}
+        <input type="file" id="img" name="img" placeholder="Image" onChange={handleImage} required />
         <input type="text" name="technologies" placeholder="Techologies" onChange={handleChange} value={technologies} required />
         <input type="text" name="source" placeholder="Source" onChange={handleChange} value={source} required />
         <input type="text" name="live" placeholder="Live" onChange={handleChange} value={live} required />

@@ -34,8 +34,9 @@ const saveProject = async (project) => {
         technologies: project.technologies,
         source: project.source,
         live: project.live,
+        img: project.img,
       }),
-      headers: {"Content-Type": "application/json"}
+      // headers: {"Content-Type": "multipart/form-data"}
     });
 
     return await response.json();
