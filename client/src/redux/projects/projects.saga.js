@@ -25,32 +25,23 @@ export function* onFetchProjects() {
   yield takeLatest(PROJECTS_ACTION_TYPES.FETCH_PROJECTS_START, fetchProjectsAsync);
 }
 
-const saveProject = async (project) => {
-  const response = await fetch(url,
-    {
-      method: 'POST',
-      body: JSON.stringify({
-        name: project.name,
-        description: project.description,
-        technologies: project.technologies,
-        source: project.source,
-        live: project.live,
-        img: project.img,
-      }),
-      // headers: {"Content-Type": "multipart/form-data"}
-      headers: {
-        "Content-Type": "application/json"
-       },
-    });
-
-    return await response.json();
+const saveProject = async (payload) => {
+  const formData = new FormData();
+  formData.append('image', payload.project.img);
+  Object.keys(payload.project).forEach(data => {
+    if(payload.project[data] !== payload.project.img) {
+      formData.append(data, payload.project[data]);
+    }
+  })
+  axios.post(url, formData,
+      { headers: {'Content-Type': 'multipart/form-data', 'Authorization': `Bearer ${payload.token}`}},
+    );
 }
 
 export function* saveProjectAsync({payload}) {
   try {
-    console.log("Saving projectdddddd");
     const projectSaved = yield call(saveProject, payload);
-    yield put(postProjectSuccess (projectSaved));
+    yield put(postProjectSuccess(projectSaved));
   } catch (error) {
     yield put(postProjectFailed(error));
   }

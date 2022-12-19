@@ -1,5 +1,4 @@
 const fs = require('fs');
-const path = require('path');
 const { getAllProjects, createProject } = require('../../models/projects/projects.model');
 
 async function httpGetAllProjects(req, res) {
@@ -10,9 +9,11 @@ async function httpGetAllProjects(req, res) {
 async function httpAddNewProject(req, res, next) {
   const project = req.body;
   console.log(req.file)
-  if (project.img) {
+  console.log(req.body)
+  console.log(req.body.description)
+  if (req.file) {
     project.img = {
-      data: fs.readFileSync(path.join(__dirname + '/uploads/' + req.file.filename)),
+      data: fs.readFileSync(`uploads/${req.file.filename}`),
       contentType: 'image/png'
     }
   }
@@ -54,5 +55,3 @@ module.exports = {
   httpGetAllProjects,
   httpAddNewProject
 }
-
-// || !project.description || !project.source || !project.live

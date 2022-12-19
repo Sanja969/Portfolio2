@@ -19,7 +19,7 @@ export const projectsReducer = (state = INITIAL_STATE, { type, payload }) => {
     case PROJECTS_ACTION_TYPES.POST_PROJECT_START:
       return { ...state,  isLoading: true }
     case PROJECTS_ACTION_TYPES.POST_PROJECT_SUCCESS:
-      return { ...state,  projects: [...state.projects, payload] }
+      return state;
     case PROJECTS_ACTION_TYPES.POST_PROJECT_FAILED:
       return { ...state,  error: payload, isLoading: false }
     default:

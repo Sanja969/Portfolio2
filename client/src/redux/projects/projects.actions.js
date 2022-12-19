@@ -16,15 +16,21 @@ export const fetchProjectsFailed = (error) => ({
   payload: error,
 })
 
-export const postProjectStart = (project) => (
+export const postProjectStart = (project, token) => (
   {
   type: PROJECTS_ACTION_TYPES.POST_PROJECT_START,
-  payload: project,
+  payload: {
+    project,
+    token,
+  },
 })
 
-export const postProjectSuccess = (project) =>( {
+export const postProjectSuccess = (project, token) =>( {
   type: PROJECTS_ACTION_TYPES.POST_PROJECT_SUCCESS,
-  payload: project,
+  payload: {
+    project,
+    token,
+  },
 })
 
 export const postProjectFailed = (error) => ({

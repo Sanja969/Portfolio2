@@ -3,14 +3,11 @@ const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const api = require('./routes/api');
-
-
+const morgan = require("morgan")
 
 const app = express();
-app.use(cors({
-  origin: 'http://localhost:3000'
-}));
-
+app.use(cors());
+app.use(morgan("tiny")) 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json());
 app.set("view engine", "ejs");

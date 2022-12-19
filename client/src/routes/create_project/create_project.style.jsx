@@ -5,7 +5,7 @@ const transColor = '#30fffe40';
 const transColor2 = '#30fffe20';
 
 export const CreateProjectContainer = styled.div`
-  margin-top: 50px;
+  margin-top: 150px;
   width: 100%;
   display: flex;
   justify-content: center;

@@ -1,13 +1,15 @@
 import React, { useState } from 'react'
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { CreateProjectContainer } from './create_project.style';
 import { postProjectStart } from '../../redux/projects/projects.actions';
+import { loginAuth } from '../../redux/user/users.selector';
 
 const AddProject = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const img = new FormData();
+
+  const token = useSelector(loginAuth)
 
   const gotToHome = () => {
     navigate('/');
@@ -19,7 +21,7 @@ const AddProject = () => {
     technologies: '',
     source: '',
     live: '',
-    urlImg: {},
+    img: {},
   };
 
   const [formFields, setFormFields] = useState(defaultFormFields);
@@ -29,7 +31,7 @@ const AddProject = () => {
     technologies,
     source,
     live,
-    urlImg,
+    img,
   } = formFields;
 
   const resetFormFields = () => {
@@ -43,7 +45,7 @@ const AddProject = () => {
     source,
     live,
     img,
-  }));
+  }, token));
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -52,26 +54,11 @@ const AddProject = () => {
 
   const handleImage = (event) => {
     setFormFields({ ...formFields,
-      urlImg: {
-      picturePreview: URL.createObjectURL(event.target.files[0]),
-      pictureAsFile: event.target.files[0]
-    }});
-  }
-
-  const setImageAction = async (event) => {
-    event.preventDefault();
-
-    img.append("file",urlImg.pictureAsFile);
-
-    console.log(urlImg.pictureAsFile);
-
-    for (let key of img.entries()) {
-      console.log(key[0] + ", " + key[1]);
-    }
+      img: event.target.files[0]
+    });
   }
 
   const submitProject = async () => {
-    const img = await setImageAction();
     createProject(name, description, img, technologies, source, live);
     resetFormFields();
     gotToHome();
@@ -80,14 +67,14 @@ const AddProject = () => {
   return (
     <CreateProjectContainer>
       <h3 className="">ADD NEW PROJECT</h3>
-      <form  onClick={submitProject}>
+      <form>
         <input type="text" name="name" placeholder="Name" onChange={handleChange} value={name} required />
         <input type="text" name="description" placeholder="Description" onChange={handleChange} value={description} required maxLength={500}/>
-        <input type="file" id="img" name="img" placeholder="Image" onChange={handleImage} required />
+        <input type="file" id="image" name="image" placeholder="Image" onChange={handleImage} required accept="image/*"/>
         <input type="text" name="technologies" placeholder="Techologies" onChange={handleChange} value={technologies} required />
         <input type="text" name="source" placeholder="Source" onChange={handleChange} value={source} required />
         <input type="text" name="live" placeholder="Live" onChange={handleChange} value={live} required />
-        <button type="submit">SUBMIT</button>
+        <button type="submit" onClick={submitProject}>SUBMIT</button>
       </form>
     </CreateProjectContainer>
   );

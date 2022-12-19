@@ -52,7 +52,7 @@ export const BgMet = styled.div`
   width: 1px;
   background-color: #fff;
   border-radius: 100%;
-  animation: ${zoom} 100s infinite;
+  animation: ${zoom} 70s infinite;
   box-shadow: ${starCount.slice(0, -1)};
 `;
 

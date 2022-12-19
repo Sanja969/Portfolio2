@@ -1,7 +1,10 @@
 import { useSelector } from 'react-redux';
-import { ProjectsContainer, ProjectContainer, ProjectSubContainer } from './projects.styles';
+import { ProjectsContainer, ProjectContainer, ProjectSubContainer, ImageContainer, SubContainer } from './projects.styles';
 import { getProjects, selectProjectsIsLoading } from '../../redux/projects/projects.selector';
 import Spinner from '../../components/spinner/spinner.component';
+import Footer from '../../components/footer/footer.component';
+
+const Buffer = require('buffer/').Buffer
 
 const Projects = () => {
 
@@ -9,30 +12,40 @@ const Projects = () => {
   const isLoader = useSelector(selectProjectsIsLoading); 
 
   return (
-    isLoader ? <Spinner /> : 
-    <ProjectsContainer>
-      <h2>&gt;&gt; PROJECTS</h2>
-      <ProjectSubContainer>
+    isLoader ? <Spinner /> :
+    <>
+      <ProjectsContainer>
+        <h2>&gt;&gt; PROJECTS</h2>
+        <ProjectSubContainer>
 
-        {
-         Object.keys(projects).map(projectNumber => {
+          {
+          Object.keys(projects).map(projectNumber => {
             const project = projects[projectNumber]
+            let base64String = Buffer.from(project.img.data.data).toString('base64');
+            const imgSource = `data:image/png;base64,${base64String}`;
             return (
             <ProjectContainer key={projectNumber}>
-              <div>
-                <h3>{project.name}</h3>
+              <SubContainer>
+                <h3>{project.name}<button>Live</button></h3>
                 <a href={project.source}>&gt;&gt; More</a>
-              </div>
-              <div>
-                <img src="https://media.istockphoto.com/id/1370772148/photo/track-and-mountains-in-valle-del-lago-somiedo-nature-park-asturias-spain.jpg?s=612x612&w=0&k=20&c=QJn62amhOddkJSbihcjWKHXShMAfcKM0hPN65aCloco=" width="100" />
+              </SubContainer>
+              <SubContainer>
+                <div>
+                  <ImageContainer style={{background: `url(${imgSource})` }}></ImageContainer>
+                </div>
+                
+                {/* <img src={imgSource} alt="Sanja Mandic"/> */}
                 <p>{project.description.slice(0, 100) + "..."}</p>
                 <p>{project.technologies}</p>
-              </div>
+              </SubContainer>
             </ProjectContainer>
           )})
-        },
-      </ProjectSubContainer>
-    </ProjectsContainer>
+          },
+        </ProjectSubContainer>
+      </ProjectsContainer>
+      <Footer />
+    </>
+    
 
 
   );
