@@ -4,8 +4,9 @@ import {
 import { fetchProjectsSuccess, fetchProjectsFailed, postProjectSuccess, postProjectFailed } from './projects.actions';
 import { PROJECTS_ACTION_TYPES } from './projects.types';
 import axios from 'axios';
+import { baseUrl } from '../urls';
 
-const url = 'http://localhost:8000/v1/projects'
+const url = `${baseUrl}/projects`
 
 const getProjects = async() => {
   const response = await fetch(url);

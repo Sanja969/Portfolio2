@@ -9,8 +9,9 @@ import {
 } from './blogs.actions';
 import { BLOGS_ACTION_TYPES } from './blogs.types';
 import axios from 'axios';
+import { baseUrl } from '../urls';
 
-const url = 'http://localhost:8000/v1/blogs'
+const url = `${baseUrl}/blogs`
 
 const getBlogs = async() => {
   const response = await fetch(url);
