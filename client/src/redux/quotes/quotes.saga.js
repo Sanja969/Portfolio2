@@ -9,8 +9,9 @@ import {
 } from './quotes.actions';
 import { QUOTES_ACTION_TYPES } from './quotes.types';
 import axios from 'axios';
+import { baseUrl } from '../urls';
 
-const url = 'http://localhost:8000/v1/quotes'
+const url = `${baseUrl}/quotes`
 
 const getQuote = async() => {
   const response = await fetch(url);
