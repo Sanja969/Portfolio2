@@ -7,8 +7,9 @@ import {
 } from './users.actions';
 import { USERS_ACTION_TYPES } from './users.types';
 import axios from 'axios';
+import { baseUrl } from '../urls';
 
-const url = 'http://localhost:8000/v1/admin/login'
+const url = `${baseUrl}/users`
 
 const login = async (user) => {
   const response = axios.post(url, user,

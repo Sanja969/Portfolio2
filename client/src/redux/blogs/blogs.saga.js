@@ -18,6 +18,7 @@ const getBlogs = async() => {
   return response.json();
 }
 export function* fetchBlogsAsync() {
+  console.log(url)
   try {
     const blogsArray = yield call(getBlogs, 'blogs');
     yield put(fetchBlogsSuccess(blogsArray));

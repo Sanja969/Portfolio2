@@ -1,1 +1,1 @@
-export const baseUrl = 'v1/'
+export const baseUrl = '/v1'
