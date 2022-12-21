@@ -17,7 +17,7 @@ const login = async (user) => {
     );
   response.then((data) => {localStorage.setItem('token', JSON.stringify(data.data.token))})
 
-  return response;
+  return await response;
 }
 
 export function* loginAsync({payload}) {

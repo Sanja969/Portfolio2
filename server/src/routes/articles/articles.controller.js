@@ -31,7 +31,21 @@ async function httpAddNewArticle(req, res) {
   res.status(201).json(article);
 }
 
+async function httpDeleteArticle(req, res) {
+  const articleId = Number(req.params.id);
+  const existArticle = await ifExistArticle(articleId)
+  if (!existArticle) {
+    return res.status(404).json({
+      error: 'Article not found'
+    })
+  }
+  await deleteArticle(articleId);
+  const articles = await getAllArticles()
+  return res.status(202).json(articles);
+}
+
 module.exports = {
   httpGetAllArticles,
-  httpAddNewArticle
+  httpAddNewArticle,
+  httpDeleteArticle,
 }

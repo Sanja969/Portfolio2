@@ -25,7 +25,21 @@ async function httpAddNewBlog(req, res) {
   res.status(201).json(blog);
 }
 
+async function httpDeleteBlog(req, res) {
+  const blogId = Number(req.params.id);
+  const existBlog = await ifExistBlog(blogId)
+  if (!existBlog) {
+    return res.status(404).json({
+      error: 'Blog not found'
+    })
+  }
+  await deleteBlog(blogId);
+  const blogs = await getAllBlogs()
+  return res.status(202).json(blogs);
+}
+
 module.exports = {
   httpGetAllBlogs,
-  httpAddNewBlog
+  httpAddNewBlog,
+  httpDeleteBlog,
 }

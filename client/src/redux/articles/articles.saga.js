@@ -15,7 +15,7 @@ const url = `${baseUrl}/articles`
 
 const getArticles = async() => {
   const response = await fetch(url);
-  return response.json();
+  return await response.json();
 }
 export function* fetchArticlesAsync() {
   try {

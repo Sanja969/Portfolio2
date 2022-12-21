@@ -33,7 +33,21 @@ async function createProject(project) {
   await saveProject(newProject);
 }
 
+async function findProject(filter) {
+  return await projects.findOne(filter);
+}
+
+async function ifExistProject(id) {
+  return await findProject({projectNumber: id});
+}
+
+async function deleteProject(ProjectId) {
+  await projects.deleteOne({ProjectNumber: ProjectId})
+}
+
 module.exports = {
   getAllProjects,
-  createProject
+  createProject,
+  ifExistProject,
+  deleteProject,
 }

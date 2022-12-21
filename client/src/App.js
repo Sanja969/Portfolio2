@@ -21,10 +21,10 @@ import { fetchQuoteStart } from './redux/quotes/quotes.actions';
 const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
+    dispatch(fetchQuoteStart());
     dispatch(fetchProjectsStart());
     dispatch(fetchBlogsStart());
     dispatch(fetchArticlesStart());
-    dispatch(fetchQuoteStart());
   }, []);
 
   return (

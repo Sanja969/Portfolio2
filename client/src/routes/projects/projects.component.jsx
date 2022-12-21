@@ -3,11 +3,12 @@ import { ProjectsContainer, ProjectContainer, ProjectSubContainer, ImageContaine
 import { getProjects, selectProjectsIsLoading } from '../../redux/projects/projects.selector';
 import Spinner from '../../components/spinner/spinner.component';
 import Footer from '../../components/footer/footer.component';
+import { loginAuth } from '../../redux/user/users.selector';
 
 const Buffer = require('buffer/').Buffer
 
 const Projects = () => {
-
+  const isLogin = useSelector(loginAuth);
   const projects = useSelector(getProjects);
   const isLoader = useSelector(selectProjectsIsLoading); 
 
@@ -26,15 +27,14 @@ const Projects = () => {
             return (
             <ProjectContainer key={projectNumber}>
               <SubContainer>
-                <h3>{project.name}<button>Live</button></h3>
+                <h3>{project.name}<button>Live</button><button>Delete</button></h3>
                 <a href={project.source}>&gt;&gt; More</a>
               </SubContainer>
               <SubContainer>
                 <div>
                   <ImageContainer style={{background: `url(${imgSource})` }}></ImageContainer>
                 </div>
-                
-                {/* <img src={imgSource} alt="Sanja Mandic"/> */}
+
                 <p>{project.description.slice(0, 100) + "..."}</p>
                 <p>{project.technologies}</p>
               </SubContainer>

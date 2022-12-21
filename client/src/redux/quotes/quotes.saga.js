@@ -15,7 +15,9 @@ const url = `${baseUrl}/quotes`
 
 const getQuote = async() => {
   const response = await fetch(url);
-  return response.json();
+  const json = await response.json()
+  localStorage.setItem('quote', json.text);
+  return await json;
 }
 export function* fetchQuoteAsync() {
   try {

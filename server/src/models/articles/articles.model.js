@@ -33,7 +33,21 @@ async function createArticle(article) {
   await saveArticle(newArticle);
 }
 
+async function findArticle(filter) {
+  return await articles.findOne(filter);
+}
+
+async function ifExistArticle(id) {
+  return await findArticle({articleNumber: id});
+}
+
+async function deleteArticle(ArticleId) {
+  await articles.deleteOne({articleNumber: ArticleId})
+}
+
 module.exports = {
   getAllArticles,
-  createArticle
+  createArticle,
+  ifExistArticle,
+  deleteArticle,
 }

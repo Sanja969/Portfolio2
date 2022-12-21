@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { getAllProjects, createProject } = require('../../models/projects/projects.model');
+const { getAllProjects, createProject, ifExistProject, deleteProject } = require('../../models/projects/projects.model');
 
 async function httpGetAllProjects(req, res) {
   const projects = await getAllProjects()
@@ -48,10 +48,26 @@ async function httpAddNewProject(req, res, next) {
   }
 
   await createProject(project);
-  res.status(201).json(project);
+  const projects = await getAllProjects()
+  return res.status(201).json(projects);
 }
+
+async function httpDeleteProject(req, res) {
+  const projectId = Number(req.params.id);
+  const existProject = await ifExistProject(projectId)
+  if (!existProject) {
+    return res.status(404).json({
+      error: 'Project not found'
+    })
+  }
+  await deleteProject(projectId);
+  const projects = await getAllProjects()
+  return res.status(202).json(projects);
+}
+
 
 module.exports = {
   httpGetAllProjects,
-  httpAddNewProject
+  httpAddNewProject,
+  httpDeleteProject,
 }

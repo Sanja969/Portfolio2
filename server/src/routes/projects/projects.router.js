@@ -1,5 +1,5 @@
 const express = require('express');
-const { httpGetAllProjects, httpAddNewProject } = require('./projects.controller')
+const { httpGetAllProjects, httpAddNewProject, httpDeleteProject } = require('./projects.controller')
 const multer = require('multer');
 const { isLoggedIn } = require('../users/users.middleware')
 
@@ -18,5 +18,6 @@ const projectsRouter = express.Router();
 
 projectsRouter.get('/', httpGetAllProjects);
 projectsRouter.post('/', isLoggedIn, upload.single('image'), httpAddNewProject);
+projectsRouter.delete('/:id', isLoggedIn, httpDeleteProject);
 
 module.exports = projectsRouter;

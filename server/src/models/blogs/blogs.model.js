@@ -33,7 +33,21 @@ async function createBlog(blog) {
   await saveBlog(newBlog);
 }
 
+async function findBlog(filter) {
+  return await blogs.findOne(filter);
+}
+
+async function ifExistBlog(id) {
+  return await findBlog({blogNumber: id});
+}
+
+async function deleteBlog(BlogId) {
+  await blogs.deleteOne({blogNumber: BlogId})
+}
+
 module.exports = {
   getAllBlogs,
-  createBlog
+  createBlog,
+  ifExistBlog,
+  deleteBlog,
 }

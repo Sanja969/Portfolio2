@@ -102,6 +102,9 @@ export const SubContainer = styled.div`
           border: none;
           background-color: rgba(0, 255, 0, 0.5);
           cursor: pointer;
+          &:last-child {
+            background-color: red;
+          }
         }
       }
     }

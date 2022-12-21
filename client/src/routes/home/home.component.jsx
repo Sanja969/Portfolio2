@@ -1,35 +1,33 @@
 /* eslint-disable jsx-a11y/iframe-has-title */
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { LinksContainer, HeadLineContainer, HomeContainer } from './home.styles'
 import StarLink from '../../components/link/link.component';
 import theme from '../../assets/load_link.mp3';
 import Typewriter from "typewriter-effect";
-import { selectQuote } from '../../redux/quotes/quotes.selector';
+import { fetchQuoteStart } from '../../redux/quotes/quotes.actions';
 
 const Home = () => {
-  const quote = useSelector(selectQuote).text;
-  console.log(quote);
+  const quote = localStorage.getItem('quote');
+  
   const Playit = () => {
-    const audio = new Audio(theme);
-    audio.play();
-    }
-  useEffect(() => {Playit()}, []);
+  const audio = new Audio(theme);
+  audio.play();
+  }
+  useEffect(() => {
+    Playit()
 
+  }, []);
+  console.log(quote)
   return (
     <HomeContainer>
       <Typewriter
-        
         onInit={(typewriter)=> {
-
         typewriter
-        .typeString("Hello guys and Welcome to my page!")
-        .start()
-        .deleteAll()
-        .typeString(quote)
-        .start()
+          .typeString(quote)
+          .start()
         }}
         />
+      
       <HeadLineContainer>
         <img alt="sanja mandic" src="logo3.jpg" width="150" />
         <h2>SANJA MANDIC</h2>
