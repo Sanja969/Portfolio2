@@ -22,6 +22,12 @@ export const projectsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return state;
     case PROJECTS_ACTION_TYPES.POST_PROJECT_FAILED:
       return { ...state,  error: payload, isLoading: false }
+    case PROJECTS_ACTION_TYPES.DELETE_PROJECT_START:
+      return { ...state, isLoading: true }
+    case PROJECTS_ACTION_TYPES.DELETE_PROJECT_SUCCESS:
+      return { ...state, projects: payload, isLoading: false }
+    case PROJECTS_ACTION_TYPES.DELETE_PROJECT_FAILED:
+      return { ...state,  error: payload, isLoading: false }
     default:
       return state;
   }

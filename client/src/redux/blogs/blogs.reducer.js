@@ -22,6 +22,12 @@ export const blogsReducer = (state = INITIAL_STATE, { type, payload }) => {
       return state;
     case BLOGS_ACTION_TYPES.POST_BLOG_FAILED:
       return { ...state,  error: payload, isLoading: false }
+    case BLOGS_ACTION_TYPES.DELETE_BLOG_START:
+      return { ...state, isLoading: true }
+    case BLOGS_ACTION_TYPES.DELETE_BLOG_SUCCESS:
+      return { ...state, blogs: payload, isLoading: false }
+    case BLOGS_ACTION_TYPES.DELETE_BLOG_FAILED:
+      return { ...state,  error: payload, isLoading: false }
     default:
       return state;
   }

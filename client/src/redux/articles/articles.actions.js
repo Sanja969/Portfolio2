@@ -37,3 +37,19 @@ export const postArticleFailed = (error) => ({
   type: ARTICLES_ACTION_TYPES.POST_ARTICLE_FAILED,
   payload: error,
 })
+
+export const deleteArticleStart = (id) => (
+  {
+  type: ARTICLES_ACTION_TYPES.DELETE_ARTICLE_START,
+  payload: id,
+})
+
+export const deleteArticleSuccess = (id) =>( {
+  type: ARTICLES_ACTION_TYPES.DELETE_ARTICLE_SUCCESS,
+  payload: id,
+})
+
+export const deleteArticleFailed = (error) => ({
+  type: ARTICLES_ACTION_TYPES.DELETE_ARTICLE_FAILED,
+  payload: error,
+})

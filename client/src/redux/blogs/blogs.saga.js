@@ -6,6 +6,8 @@ import {
   fetchBlogsFailed,
   postBlogSuccess,
   postBlogFailed,
+  deleteBlogSuccess,
+  deleteBlogFailed,
 } from './blogs.actions';
 import { BLOGS_ACTION_TYPES } from './blogs.types';
 import axios from 'axios';
@@ -50,6 +52,31 @@ export function* onPostBlog() {
   yield takeLatest(BLOGS_ACTION_TYPES.POST_BLOG_START, saveBlogAsync);
 }
 
+const deleteBlog = async (payload) => {
+  const response = await fetch(`${url}/${payload}`,
+  {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  )
+  return await response.json();
+}
+
+export function* deleteBlogAsync({payload}) {
+  try {
+    const BlogSaved = yield call(deleteBlog, payload);
+    yield put(deleteBlogSuccess(BlogSaved));
+  } catch (error) {
+    yield put(deleteBlogFailed(error));
+  }
+}
+
+export function* onDeleteBlog() {
+  yield takeLatest(BLOGS_ACTION_TYPES.DELETE_BLOG_START, deleteBlogAsync);
+}
+
 export function* blogsSaga() {
-  yield all([call(onFetchBlogs), call(onPostBlog)]);
+  yield all([call(onFetchBlogs), call(onPostBlog), call(onDeleteBlog)]);
 }

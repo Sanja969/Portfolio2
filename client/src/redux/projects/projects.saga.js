@@ -1,7 +1,14 @@
 import {
   takeLatest, all, call, put,
 } from 'redux-saga/effects';
-import { fetchProjectsSuccess, fetchProjectsFailed, postProjectSuccess, postProjectFailed } from './projects.actions';
+import {
+  fetchProjectsSuccess, 
+  fetchProjectsFailed,
+  postProjectSuccess,
+  postProjectFailed,
+  deleteProjectSuccess,
+  deleteProjectFailed,
+} from './projects.actions';
 import { PROJECTS_ACTION_TYPES } from './projects.types';
 import axios from 'axios';
 import { baseUrl } from '../urls';
@@ -52,6 +59,31 @@ export function* onPostProject() {
   yield takeLatest(PROJECTS_ACTION_TYPES.POST_PROJECT_START, saveProjectAsync);
 }
 
+const deleteProject = async (payload) => {
+  const response = await fetch(`${url}/${payload}`,
+  {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  }
+  )
+  return await response.json();
+}
+
+export function* deleteProjectAsync({payload}) {
+  try {
+    const ProjectSaved = yield call(deleteProject, payload);
+    yield put(deleteProjectSuccess(ProjectSaved));
+  } catch (error) {
+    yield put(deleteProjectFailed(error));
+  }
+}
+
+export function* onDeleteProject() {
+  yield takeLatest(PROJECTS_ACTION_TYPES.DELETE_PROJECT_START, deleteProjectAsync);
+}
+
 export function* projectsSaga() {
-  yield all([call(onFetchProjects), call(onPostProject)]);
+  yield all([call(onFetchProjects), call(onPostProject), call(onDeleteProject)]);
 }

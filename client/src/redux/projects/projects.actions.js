@@ -37,3 +37,19 @@ export const postProjectFailed = (error) => ({
   type: PROJECTS_ACTION_TYPES.POST_PROJECT_FAILED,
   payload: error,
 })
+
+export const deleteProjectStart = (id) => (
+  {
+  type: PROJECTS_ACTION_TYPES.DELETE_PROJECT_START,
+  payload: id,
+})
+
+export const deleteProjectSuccess = (id) =>( {
+  type: PROJECTS_ACTION_TYPES.DELETE_PROJECT_SUCCESS,
+  payload: id,
+})
+
+export const deleteProjectFailed = (error) => ({
+  type: PROJECTS_ACTION_TYPES.DELETE_PROJECT_FAILED,
+  payload: error,
+})

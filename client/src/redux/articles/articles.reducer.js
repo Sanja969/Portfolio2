@@ -22,6 +22,12 @@ export const articlesReducer = (state = INITIAL_STATE, { type, payload }) => {
       return state;
     case ARTICLES_ACTION_TYPES.POST_ARTICLE_FAILED:
       return { ...state,  error: payload, isLoading: false }
+    case ARTICLES_ACTION_TYPES.DELETE_ARTICLE_START:
+      return { ...state, isLoading: true }
+    case ARTICLES_ACTION_TYPES.DELETE_ARTICLE_SUCCESS:
+      return { ...state, articles: payload, isLoading: false }
+    case ARTICLES_ACTION_TYPES.DELETE_ARTICLE_FAILED:
+      return { ...state,  error: payload, isLoading: false }
     default:
       return state;
   }

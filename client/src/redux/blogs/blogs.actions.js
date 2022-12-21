@@ -37,3 +37,19 @@ export const postBlogFailed = (error) => ({
   type: BLOGS_ACTION_TYPES.POST_BLOG_FAILED,
   payload: error,
 })
+
+export const deleteBlogStart = (id) => (
+  {
+  type: BLOGS_ACTION_TYPES.DELETE_BLOG_START,
+  payload: id,
+})
+
+export const deleteBlogSuccess = (id) =>( {
+  type: BLOGS_ACTION_TYPES.DELETE_BLOG_SUCCESS,
+  payload: id,
+})
+
+export const deleteBlogFailed = (error) => ({
+  type: BLOGS_ACTION_TYPES.DELETE_BLOG_FAILED,
+  payload: error,
+})
