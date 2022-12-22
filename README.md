@@ -1,6 +1,6 @@
 # Personal Portfolio
 
-My personal portfolio where yoou can see four different pages and navigate to my other medias.
+My personal portfolio where you can see four different pages and navigate to my other medias.
 It is Driven by MongoDB, where are stored projects, blogs, articles and quotes that are appearing on home page.
 
 ## Technologies
