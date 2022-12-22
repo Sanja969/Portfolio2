@@ -9,7 +9,7 @@ import { USERS_ACTION_TYPES } from './users.types';
 import axios from 'axios';
 import { baseUrl } from '../urls';
 
-const url = `${baseUrl}/users`
+const url = `${baseUrl}/admin/login`
 
 const login = async (user) => {
   const response = axios.post(url, user,

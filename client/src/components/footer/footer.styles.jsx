@@ -29,4 +29,7 @@ export const FooterContainer = styled.footer`
     animation: ${shine} 1s;
     margin: 10px;
   }
+  h6 {
+    padding: 15px;
+  }
 `;

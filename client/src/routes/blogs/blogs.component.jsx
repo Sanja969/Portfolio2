@@ -26,7 +26,9 @@ const Blogs = () => {
             <BlogContainer key={blogNumber}>
               <h3>
                 {blog.title}
-                <button onClick={() => dispatch(deleteBlogStart({blogNumber, token}))}>Delete</button>
+                {
+                  token !== 1 ? <button onClick={() => dispatch(deleteBlogStart({blogNumber, token}))}>Delete</button> : ''
+                }
               </h3>
               <small>{blog.date}</small>
               <p>{blog.text.slice(0, 100)}...</p>

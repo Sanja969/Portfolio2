@@ -17,7 +17,7 @@ const Footer = () => {
         }}
         />
         <a href="https://github.com/Sanja969?tab=repositories">&gt;&gt; Repo</a>
-      
+        <h6>Copyright @Sanja969</h6>
     </FooterContainer>
   )
 }

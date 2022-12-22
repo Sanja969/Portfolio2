@@ -30,6 +30,13 @@ export const NavSub = styled.div`
     align-items: center;
     justify-content: center;
 
+    button {
+      padding: 5px;
+      margin-left: 10px;
+      background: red;
+      border: none;
+    }
+
     @media (max-width: 1020px) {
       font-size: 20px;
     }

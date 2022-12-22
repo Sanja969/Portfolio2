@@ -22,7 +22,8 @@ async function httpAddNewBlog(req, res) {
   }
 
   await createBlog(blog);
-  res.status(201).json(blog);
+  const blogs = await getAllBlogs()
+  return res.status(201).json(blogs);
 }
 
 async function httpDeleteBlog(req, res) {

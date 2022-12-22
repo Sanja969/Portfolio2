@@ -31,8 +31,11 @@ const Projects = () => {
               <SubContainer>
                 <h3>
                   {project.name}
-                  <button>Live</button>
-                  <button onClick={() => dispatch(deleteProjectStart({projectNumber, token}))}>Delete</button>
+                  <a>Live</a>
+                  {
+                    token !== 1 ? <button onClick={() => dispatch(deleteProjectStart({projectNumber, token}))}>Delete</button> : ''
+                  }
+                  
                 </h3>
                 <a href={project.source}>&gt;&gt; More</a>
               </SubContainer>

@@ -73,6 +73,22 @@ export const ArticleContainer = styled.div`
   h3 {
     font-size: 26px;
     text-shadow: 0 0 4px rgba(172,249,251,0.65);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    a,
+    button {
+      margin-left: 10px;
+      padding: 5px !important;
+      border: none;
+      background-color: rgba(0, 255, 0, 0.5);
+      cursor: pointer;
+      font-size: 14px;
+      height: 27px;
+    }
+    button {
+      background-color: red;
+    }
   }
   small {
     color: white;

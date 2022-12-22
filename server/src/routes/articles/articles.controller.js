@@ -28,7 +28,8 @@ async function httpAddNewArticle(req, res) {
   }
 
   await createArticle(article);
-  res.status(201).json(article);
+  const articles = await getAllArticles()
+  return res.status(201).json(articles);
 }
 
 async function httpDeleteArticle(req, res) {

@@ -20,7 +20,11 @@ const Navigation = () => {
         <NavSub>
           <a href="/" onClick={Playit()}>
             <SpinerImg src="https://icons.iconarchive.com/icons/turbomilk/space-invaders/256/blackhole-icon.png" alt="galaxy"/>
-            <span>SANJA MANDIC {token ? '❤' : ''}</span>
+            <span>SANJA MANDIC</span>
+            {
+              token !== 1 ? <button onClick={() => {localStorage.setItem('token', JSON.stringify(1))}}>Logout</button> : ''
+            }
+            
           </a>
           <NavLinks>
             <a href= "/portfolio">Projects</a>

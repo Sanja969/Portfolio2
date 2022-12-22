@@ -96,15 +96,19 @@ export const SubContainer = styled.div`
         justify-content: space-between;
         align-items: center;
 
+        a,
         button {
           margin-left: 10px;
           padding: 5px !important;
           border: none;
           background-color: rgba(0, 255, 0, 0.5);
           cursor: pointer;
-          &:last-child {
-            background-color: red;
-          }
+          font-size: 14px;
+          height: 27px;
+        }
+
+        button {
+          background-color: red;
         }
       }
     }

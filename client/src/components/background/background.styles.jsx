@@ -1,4 +1,5 @@
 import styled, { keyframes } from 'styled-components';
+import bg from '../../assets/bg.jpg'
 
 const STAR_COUNT = 300
 let starCount = ""
@@ -8,11 +9,11 @@ const randomNumber = (min, max) => {
 }
 
 for(let i = 0; i < STAR_COUNT; i++) {
-    starCount += `${randomNumber(-50, 50)}vw ${randomNumber(-50, 50)}vh ${randomNumber(0, 1)}px ${randomNumber(0, 1)}px rgb(32,178,170, 0.5),`
+    starCount += `${randomNumber(-50, 50)}vw ${randomNumber(-50, 50)}vh ${randomNumber(0, 1)}px ${randomNumber(0, 1)}px rgb(208, 165, 243, 0.5),`
 }
 
 export const BgContainer = styled.div`
-background: url(https://i.pinimg.com/originals/f6/de/ab/f6deab221a6537605dbdd96edff034db.jpg) no-repeat;
+background: url(${bg}) no-repeat;
 background-size: cover;
 height: 100%;
 width: 100%;

@@ -28,7 +28,9 @@ const Articles = () => {
             <ArticleContainer key={articleNumber}>
               <h3>
                 {article.title}
-                <button onClick={() => dispatch(deleteArticleStart({articleNumber, token}))}>Delete</button>
+                {
+                  token !== 1 ? <button onClick={() => dispatch(deleteArticleStart({articleNumber, token}))}>Delete</button> : ''
+                }
               </h3>
               <small>{article.date}</small>
               <p>{article.text}</p>

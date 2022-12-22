@@ -34,9 +34,13 @@ export function* onFetchBlogs() {
 }
 
 const saveBlog = async (payload) => {
-  axios.post(url, payload.blog,
-      { headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${payload.token}`}},
+  const response = await fetch(url,
+      {
+        method: 'POST',
+        body: JSON.stringify(payload.blog),
+        headers: {'Content-Type': 'application/json', 'Authorization': `Bearer ${payload.token}`}},
     );
+    return await response.json();
 }
 
 export function* saveBlogAsync({payload}) {
