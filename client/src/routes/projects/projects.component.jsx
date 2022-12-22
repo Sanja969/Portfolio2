@@ -31,7 +31,7 @@ const Projects = () => {
               <SubContainer>
                 <h3>
                   {project.name}
-                  <a>Live</a>
+                  <a href={project.live}>Live</a>
                   {
                     token !== 1 ? <button onClick={() => dispatch(deleteProjectStart({projectNumber, token}))}>Delete</button> : ''
                   }
