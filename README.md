@@ -14,7 +14,7 @@ It is Driven by MongoDB, where are stored projects, blogs, articles and quotes t
 ## Architecture Diagram
 
   <kbd>
-    <img src="/assets/readme.png" alt="book-home" width="800">
+    <img src="client/src/assets/readme.png" alt="book-home" width="800">
   </kbd>
 
 
