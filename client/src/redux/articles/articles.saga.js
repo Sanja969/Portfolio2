@@ -52,11 +52,11 @@ export function* onPostArticle() {
 }
 
 const deleteArticle = async (payload) => {
-  const response = await fetch(`${url}/${payload}`,
+  const response = await fetch(`${url}/${payload.articleNumber}`,
   {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json', 'Authorization': `Bearer ${payload.token}`
     },
   }
   )

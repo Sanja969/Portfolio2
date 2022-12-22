@@ -60,11 +60,11 @@ export function* onPostProject() {
 }
 
 const deleteProject = async (payload) => {
-  const response = await fetch(`${url}/${payload}`,
+  const response = await fetch(`${url}/${payload.projectNumber}`,
   {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json',
+      'Content-Type': 'application/json', 'Authorization': `Bearer ${payload.token}`
     },
   }
   )

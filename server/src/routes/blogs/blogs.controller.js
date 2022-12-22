@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { getAllBlogs, createBlog } = require('../../models/blogs/blogs.model');
+const { getAllBlogs, createBlog, deleteBlog, ifExistBlog } = require('../../models/blogs/blogs.model');
 
 async function httpGetAllBlogs(req, res) {
   const blogs = await getAllBlogs()

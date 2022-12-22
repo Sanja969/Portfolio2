@@ -42,7 +42,7 @@ async function ifExistProject(id) {
 }
 
 async function deleteProject(ProjectId) {
-  await projects.deleteOne({ProjectNumber: ProjectId})
+  await projects.deleteOne({projectNumber: ProjectId})
 }
 
 module.exports = {

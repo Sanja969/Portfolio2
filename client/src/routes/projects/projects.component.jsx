@@ -1,14 +1,16 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { ProjectsContainer, ProjectContainer, ProjectSubContainer, ImageContainer, SubContainer } from './projects.styles';
 import { getProjects, selectProjectsIsLoading } from '../../redux/projects/projects.selector';
 import Spinner from '../../components/spinner/spinner.component';
 import Footer from '../../components/footer/footer.component';
 import { loginAuth } from '../../redux/user/users.selector';
+import { deleteProjectStart } from '../../redux/projects/projects.actions';
 
 const Buffer = require('buffer/').Buffer
 
 const Projects = () => {
-  const isLogin = useSelector(loginAuth);
+  const dispatch = useDispatch();
+  const token = useSelector(loginAuth);
   const projects = useSelector(getProjects);
   const isLoader = useSelector(selectProjectsIsLoading); 
 
@@ -27,7 +29,11 @@ const Projects = () => {
             return (
             <ProjectContainer key={projectNumber}>
               <SubContainer>
-                <h3>{project.name}<button>Live</button><button>Delete</button></h3>
+                <h3>
+                  {project.name}
+                  <button>Live</button>
+                  <button onClick={() => dispatch(deleteProjectStart({projectNumber, token}))}>Delete</button>
+                </h3>
                 <a href={project.source}>&gt;&gt; More</a>
               </SubContainer>
               <SubContainer>
@@ -40,7 +46,7 @@ const Projects = () => {
               </SubContainer>
             </ProjectContainer>
           )})
-          },
+          }
         </ProjectSubContainer>
       </ProjectsContainer>
       <Footer />

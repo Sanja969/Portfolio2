@@ -1,5 +1,5 @@
 const fs = require('fs');
-const { getAllArticles, createArticle } = require('../../models/articles/articles.model');
+const { getAllArticles, createArticle, deleteArticle, ifExistArticle } = require('../../models/articles/articles.model');
 
 async function httpGetAllArticles(req, res) {
   const articles = await getAllArticles()
