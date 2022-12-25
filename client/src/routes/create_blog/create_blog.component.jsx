@@ -52,7 +52,7 @@ const AddBlog = () => {
       <h3 className="">ADD NEW BLOG</h3>
       <form>
         <input type="text" name="title" placeholder="Title" onChange={handleChange} value={title} required />
-        <input type="text" name="text" placeholder="Text" onChange={handleChange} value={text} required maxLength={2000}/>
+        <input type="text" name="text" placeholder="Text" onChange={handleChange} value={text} required maxLength={4000}/>
         <button type="submit" onClick={submitBlog}>SUBMIT</button>
       </form>
     </CreateBlogContainer>

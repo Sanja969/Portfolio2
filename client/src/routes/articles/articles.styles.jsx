@@ -37,7 +37,7 @@ export const ArticlesSubContainer = styled.div`
   display: grid;
   column-gap: 20px;
   row-gap: 20px;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(1, minmax(0, 1fr));
 
   h3,
   a {
@@ -99,5 +99,10 @@ export const ArticleContainer = styled.div`
   p {
     font-size: 18px;
     text-shadow: 0 0 4px rgba(172,249,251,0.65);
+  }
+
+  a {
+    margin-top: 10px;
+    color: green;
   }
 `;

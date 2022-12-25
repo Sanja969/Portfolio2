@@ -52,11 +52,10 @@ export const BlogsSubContainer = styled.div`
   }
 `;
 
-export const BlogContainer = styled.a`
+export const BlogContainer = styled.div`
   padding: 20px;
   display: flex;
   flex-direction: column;
-  text-align: center;
   max-width: 100% !important;
   width: 100%;
   background-color: ${transColor2};
@@ -72,9 +71,6 @@ export const BlogContainer = styled.a`
   h3 {
     font-size: 26px;
     text-shadow: 0 0 4px rgba(172,249,251,0.65);
-    display: flex;
-    align-items: center;
-    justify-content: center;
 
     a,
     button {
@@ -89,6 +85,7 @@ export const BlogContainer = styled.a`
     button {
       background-color: red;
     }
+
   }
   small {
     color: white;
@@ -99,5 +96,9 @@ export const BlogContainer = styled.a`
   p {
     font-size: 18px;
     text-shadow: 0 0 4px rgba(172,249,251,0.65);
+  }
+  a {
+    margin-top: 10px;
+    color: green;
   }
 `;

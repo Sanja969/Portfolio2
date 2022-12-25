@@ -26,7 +26,7 @@ const Blogs = () => {
             const blog = blogs[blogNumber]
             return (
               <>
-                <BlogContainer key={blogNumber} onClick={() => dispatch(getBlog(blog))}>
+                <BlogContainer key={blogNumber}>
                 <h3>
                   {blog.title}
                   {
@@ -35,6 +35,7 @@ const Blogs = () => {
                 </h3>
                 <small>{blog.date}</small>
                 <p>{blog.text.slice(0, 100)}...</p>
+                <a  onClick={() => dispatch(getBlog(blog))}>&gt;&gt;More</a>
                 </BlogContainer>
                 <Blog />
               </>

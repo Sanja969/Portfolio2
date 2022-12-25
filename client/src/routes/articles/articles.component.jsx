@@ -34,7 +34,7 @@ const Articles = () => {
               </h3>
               <small>{article.date}</small>
               <p>{article.text}</p>
-              <p>{article.link}</p>
+              <a href={article.link}> &gt;&gt; Click here</a>
             </ArticleContainer>
           )})
           }
