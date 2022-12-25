@@ -18,7 +18,6 @@ It is Driven by MongoDB, where are stored projects, blogs, articles and quotes t
   </kbd>
 
 
-
 # Getting Started
 
 To get a local copy up and running follow these simple example steps.

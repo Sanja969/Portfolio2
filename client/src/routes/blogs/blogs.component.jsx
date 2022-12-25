@@ -27,7 +27,7 @@ const Blogs = () => {
               <h3>
                 {blog.title}
                 {
-                  token !== 1 ? <button onClick={() => dispatch(deleteBlogStart({blogNumber, token}))}>Delete</button> : ''
+                  token && token !== 1 ? <button onClick={() => dispatch(deleteBlogStart({blogNumber, token}))}>Delete</button> : ''
                 }
               </h3>
               <small>{blog.date}</small>

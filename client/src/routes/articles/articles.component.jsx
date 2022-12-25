@@ -29,7 +29,7 @@ const Articles = () => {
               <h3>
                 {article.title}
                 {
-                  token !== 1 ? <button onClick={() => dispatch(deleteArticleStart({articleNumber, token}))}>Delete</button> : ''
+                  token && token !== 1 ? <button onClick={() => dispatch(deleteArticleStart({articleNumber, token}))}>Delete</button> : ''
                 }
               </h3>
               <small>{article.date}</small>

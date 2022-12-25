@@ -3,7 +3,7 @@
 import { USERS_ACTION_TYPES } from './users.types';
 
 const INITIAL_STATE = {
-  token: JSON.parse(localStorage.getItem('token')) || '',
+  token: JSON.parse(localStorage.getItem('token')) || 1,
   isLoading: false,
   error: null
 }
