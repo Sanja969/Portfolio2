@@ -127,7 +127,7 @@ export const SubContainer = styled.div`
 
         &:nth-child(2) {
           font-size: 15px;
-          color: orange;
+          color: rgb(208, 165, 243);
         }
         
         &:last-child {

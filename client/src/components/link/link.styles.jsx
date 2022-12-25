@@ -5,7 +5,7 @@ const mainColor ='#30fffe';
 const transColor = '#30fffe40';
 const transColor2 = '#30fffe20';
 
-export const NavLink = styled(Link)`
+export const NavLink = styled.a`
 position: static;
   width: 100px;
   text-align: center;

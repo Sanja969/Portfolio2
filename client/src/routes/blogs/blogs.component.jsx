@@ -5,6 +5,8 @@ import Spinner from '../../components/spinner/spinner.component';
 import Footer from '../../components/footer/footer.component';
 import { deleteBlogStart } from '../../redux/blogs/blogs.actions';
 import { loginAuth } from '../../redux/user/users.selector';
+import { getBlog } from '../../redux/blog/blog';
+import Blog from '../../components/blog/blog.component';
 
 const Blogs = () => {
   const dispatch = useDispatch();
@@ -23,16 +25,19 @@ const Blogs = () => {
           Object.keys(blogs).map(blogNumber => {
             const blog = blogs[blogNumber]
             return (
-            <BlogContainer key={blogNumber}>
-              <h3>
-                {blog.title}
-                {
-                  !token || token !== 1 ? <button onClick={() => dispatch(deleteBlogStart({blogNumber, token}))}>Delete</button> : ''
-                }
-              </h3>
-              <small>{blog.date}</small>
-              <p>{blog.text.slice(0, 100)}...</p>
-            </BlogContainer>
+              <>
+                <BlogContainer key={blogNumber} onClick={() => dispatch(getBlog(blog))}>
+                <h3>
+                  {blog.title}
+                  {
+                    !token || token !== 1 ? <button onClick={() => dispatch(deleteBlogStart({blogNumber, token}))}>Delete</button> : ''
+                  }
+                </h3>
+                <small>{blog.date}</small>
+                <p>{blog.text.slice(0, 100)}...</p>
+                </BlogContainer>
+                <Blog />
+              </>
           )})
           }
         </BlogsSubContainer>

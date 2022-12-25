@@ -52,7 +52,7 @@ export const BlogsSubContainer = styled.div`
   }
 `;
 
-export const BlogContainer = styled.div`
+export const BlogContainer = styled.a`
   padding: 20px;
   display: flex;
   flex-direction: column;
