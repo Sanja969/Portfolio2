@@ -33,7 +33,7 @@ const Projects = () => {
                   {project.name}
                   <a href={project.live}>Live</a>
                   {
-                    token && token !== 1 ? <button onClick={() => dispatch(deleteProjectStart({projectNumber, token}))}>Delete</button> : ''
+                    !token || token !== 1 ? <button onClick={() => dispatch(deleteProjectStart({projectNumber, token}))}>Delete</button> : ''
                   }
                   
                 </h3>

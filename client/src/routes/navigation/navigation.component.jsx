@@ -22,7 +22,7 @@ const Navigation = () => {
             <SpinerImg src="https://icons.iconarchive.com/icons/turbomilk/space-invaders/256/blackhole-icon.png" alt="galaxy"/>
             <span>SANJA MANDIC</span>
             {
-              token && token !== 1 ? <button onClick={() => {localStorage.setItem('token', JSON.stringify(1))}}>Logout</button> : ''
+              !token || token !== 1 ? <button onClick={() => {localStorage.setItem('token', JSON.stringify(1))}}>Logout</button> : ''
             }
             
           </a>
